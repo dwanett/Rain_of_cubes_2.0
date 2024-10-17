@@ -43,6 +43,6 @@ public class Bomb : EntityObjectPool
 
         _coroutineChangeAlphaColor = null;
         Explode();
-        Exploded.Invoke(this);
+        Exploded?.Invoke(this);
     }
 }
