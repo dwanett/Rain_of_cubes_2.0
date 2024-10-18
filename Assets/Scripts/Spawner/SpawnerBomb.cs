@@ -23,7 +23,7 @@ public class SpawnerBomb : Spawner<Bomb>
     
     protected override Bomb Instantiate()
     {
-        return Instantiate(_prefabEntity);
+        return Instantiate(PrefabEntity);
     }
     
     private void DespawnBomb(Bomb bomb)

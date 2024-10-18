@@ -2,32 +2,32 @@
 
 public abstract class EntityObjectPool : MonoBehaviour
 {
-    [SerializeField] protected Renderer _renderer;
-    [SerializeField] protected float _minTimeLive;
-    [SerializeField] protected float _maxTimeLive;
-
-    public float TimeLive { get; protected set; }
+    [SerializeField] protected Renderer Renderer;
+    [SerializeField] protected float MinTimeLive;
+    [SerializeField] protected float MaxTimeLive;
     
-    protected Color _defaultColor;
+    protected Color DefaultColor;
+    
+    public float TimeLive { get; protected set; }
     
     private void Awake()
     {
-        _defaultColor = _renderer.material.color;
-        TimeLive = Random.Range(_minTimeLive, _maxTimeLive);
+        DefaultColor = Renderer.material.color;
+        TimeLive = Random.Range(MinTimeLive, MaxTimeLive);
     }
     
     private void OnValidate()
     {
-        if (_minTimeLive > _maxTimeLive)
+        if (MinTimeLive > MaxTimeLive)
         {
-            _minTimeLive = _maxTimeLive - 1;
+            MinTimeLive = MaxTimeLive - 1;
         }
     }
     
     public void EnabledEntity()
     {
         RestoreDefaultColor();
-        TimeLive = Random.Range(_minTimeLive, _maxTimeLive);
+        TimeLive = Random.Range(MinTimeLive, MaxTimeLive);
         gameObject.SetActive(true);
     }
     
@@ -38,6 +38,6 @@ public abstract class EntityObjectPool : MonoBehaviour
     
     private void RestoreDefaultColor()
     {
-        _renderer.material.color = _defaultColor;
+        Renderer.material.color = DefaultColor;
     }
 }

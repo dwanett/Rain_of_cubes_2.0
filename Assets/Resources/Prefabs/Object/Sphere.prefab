@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b46c9a90447469fb2f5b07ae765ae79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 7456982297271106022}
-  _minTimeLive: 2
-  _maxTimeLive: 5
+  Renderer: {fileID: 7456982297271106022}
+  MinTimeLive: 2
+  MaxTimeLive: 5
   _forceExplode: 400
   _radiusExplode: 30
   _targetColor: {r: 0, g: 0, b: 0, a: 0}

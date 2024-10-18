@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb29cd0ce7bf49b48f64b6bab6ea753e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabEntity: {fileID: 3117787399605342647, guid: 75d3acb1a3c356542aa9b54749e69ee6, type: 3}
+  PrefabEntity: {fileID: 3117787399605342647, guid: 75d3acb1a3c356542aa9b54749e69ee6, type: 3}
   <MaxSpawn>k__BackingField: 1000
 --- !u!33 &516212829
 MeshFilter:
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee642f883245f6c4298f5a5297504838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabEntity: {fileID: 1758243576184470579, guid: 780acab85fc31e149986a373fa0614ea, type: 3}
+  PrefabEntity: {fileID: 1758243576184470579, guid: 780acab85fc31e149986a373fa0614ea, type: 3}
   <MaxSpawn>k__BackingField: 1000
   _colliderSpawner: {fileID: 662605706}
   _spawnerBomb: {fileID: 516212828}

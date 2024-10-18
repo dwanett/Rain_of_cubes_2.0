@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Bomb : EntityObjectPool
 {
-    public event Action<Bomb> Exploded;
-    
     [SerializeField] private float _forceExplode;
     [SerializeField] private float _radiusExplode;
     [SerializeField] private Color _targetColor;
     private Coroutine _coroutineChangeAlphaColor = null;
+    
+    public event Action<Bomb> Exploded;
     
     private void Explode()
     {
@@ -38,7 +38,7 @@ public class Bomb : EntityObjectPool
         for (float i = 0.0f; i < TimeLive; i += Time.deltaTime)
         {
             yield return null;
-            _renderer.material.color = Color.Lerp(_defaultColor, _targetColor, i / TimeLive);
+            Renderer.material.color = Color.Lerp(DefaultColor, _targetColor, i / TimeLive);
         }
 
         _coroutineChangeAlphaColor = null;

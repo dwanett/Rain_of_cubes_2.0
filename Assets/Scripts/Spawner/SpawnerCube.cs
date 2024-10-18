@@ -4,12 +4,12 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Collider))]
 public class SpawnerCube : Spawner<Cube>
 {
-    [SerializeField] Collider _colliderSpawner;
-    [SerializeField] SpawnerBomb _spawnerBomb;
+    [SerializeField] private Collider _colliderSpawner;
+    [SerializeField] private SpawnerBomb _spawnerBomb;
 
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), 0, 0.0001f);
+        InvokeRepeating(nameof(Spawn), 0, 0.01f);
     }
 
     protected override void ActionOnRelease(Cube cube)
@@ -29,7 +29,7 @@ public class SpawnerCube : Spawner<Cube>
 
     protected override Cube Instantiate()
     {
-        return Instantiate(_prefabEntity, RandomSpawnPoint(), Quaternion.identity);
+        return Instantiate(PrefabEntity, RandomSpawnPoint(), Quaternion.identity);
     }
 
     private void Spawn()

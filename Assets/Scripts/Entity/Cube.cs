@@ -18,10 +18,10 @@ public class Cube : EntityObjectPool
     
     public bool TryChangeColor(Color color)
     {
-        bool isChanged = _renderer.material.color == _defaultColor;
+        bool isChanged = Renderer.material.color == DefaultColor;
         
         if (isChanged)
-            _renderer.material.color = color;
+            Renderer.material.color = color;
 
         return isChanged;
     }

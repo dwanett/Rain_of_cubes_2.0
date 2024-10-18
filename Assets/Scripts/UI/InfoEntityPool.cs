@@ -11,8 +11,6 @@ public class InfoEntityPool<T> : MonoBehaviour where T : EntityObjectPool
     private string _defaultTextCounterSpwan;
     private string _defaultTextCounterCreate;
     private string _defaultTextCounterActive;
-
-    private int _countSpawn = 0;
     
     private void OnEnable()
     {
@@ -36,13 +34,13 @@ public class InfoEntityPool<T> : MonoBehaviour where T : EntityObjectPool
 
     private void Update()
     {
-        ChangeNumberInText(_counterCreate, _defaultTextCounterCreate, _spawner.EntityPool.CountAll);
-        ChangeNumberInText(_counterActive, _defaultTextCounterActive, _spawner.EntityPool.CountActive);
+        ChangeNumberInText(_counterCreate, _defaultTextCounterCreate, _spawner.CountInstance);
+        ChangeNumberInText(_counterActive, _defaultTextCounterActive, _spawner.CountActive);
     }
 
-    private void ChangeSpawnCount()
+    private void ChangeSpawnCount(int countSpawn)
     {
-        ChangeNumberInText(_counterSpwan, _defaultTextCounterSpwan, ++_countSpawn);
+        ChangeNumberInText(_counterSpwan, _defaultTextCounterSpwan, countSpawn);
     }
     
     private void ChangeNumberInText(TextMeshProUGUI uiText, string defaultText, int number)

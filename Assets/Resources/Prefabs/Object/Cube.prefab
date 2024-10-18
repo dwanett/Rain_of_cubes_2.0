@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629428a89de02a448848056cfc9660e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 4263513323864059277}
-  _minTimeLive: 5
-  _maxTimeLive: 10
+  Renderer: {fileID: 4263513323864059277}
+  MinTimeLive: 2
+  MaxTimeLive: 5
 --- !u!54 &7389001306010983113
 Rigidbody:
   m_ObjectHideFlags: 0

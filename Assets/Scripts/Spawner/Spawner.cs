@@ -4,12 +4,15 @@ using UnityEngine.Pool;
 
 public abstract class Spawner<T> : MonoBehaviour where T : EntityObjectPool
 {
-    public event Action Spawned;
+    private int _countSpawn = 0;
+    [SerializeField] protected T PrefabEntity;
+    protected ObjectPool<T> EntityPool { get; private set; }
     
-    [SerializeField] protected T _prefabEntity;
+    public event Action<int> Spawned;
+    
     [field: SerializeField] public int MaxSpawn { get; private set; }
-    
-    public ObjectPool<T> EntityPool { get; private set; }
+    public int CountInstance { get => EntityPool.CountAll; private set => CountInstance = value; }
+    public int CountActive { get => EntityPool.CountActive; private set => CountActive = value; }
     
     private void Awake()
     {
@@ -27,7 +30,7 @@ public abstract class Spawner<T> : MonoBehaviour where T : EntityObjectPool
 
     protected virtual void ActionOnGet(T entity)
     {
-        Spawned?.Invoke();
+        Spawned?.Invoke(++_countSpawn);
     }
     
     protected abstract T Instantiate();
