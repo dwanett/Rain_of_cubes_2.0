@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Renderer))]
-public class Cube : EntityObjectPool
+public class Cube : Entity
 {
     public event Action<Cube> Died;
     
@@ -13,7 +13,7 @@ public class Cube : EntityObjectPool
         Floor cube = other.gameObject.GetComponent<Floor>();
 
         if (cube != null && TryChangeColor(new Color(Random.value, Random.value, Random.value)))
-            StartCoroutine(DespawnCube(this));
+            StartCoroutine(DespawnCube());
     }
     
     public bool TryChangeColor(Color color)
@@ -26,9 +26,9 @@ public class Cube : EntityObjectPool
         return isChanged;
     }
     
-    private IEnumerator DespawnCube(Cube cube)
+    private IEnumerator DespawnCube()
     {
-        yield return new WaitForSeconds(cube.TimeLive);
+        yield return new WaitForSeconds(TimeLive);
         Died?.Invoke(this);
     }
 }

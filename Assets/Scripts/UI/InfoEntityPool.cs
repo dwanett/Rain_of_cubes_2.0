@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class InfoEntityPool<T> : MonoBehaviour where T : EntityObjectPool
+public class InfoEntityPool<T> : MonoBehaviour where T : Entity
 {
     [SerializeField] private TextMeshProUGUI _counterSpwan;
     [SerializeField] private TextMeshProUGUI _counterCreate;

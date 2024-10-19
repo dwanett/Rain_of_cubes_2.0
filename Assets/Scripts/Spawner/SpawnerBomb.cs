@@ -9,25 +9,19 @@ public class SpawnerBomb : Spawner<Bomb>
     
     protected override void ActionOnRelease(Bomb bomb)
     {
-        bomb.DisabledEntity();
-        bomb.Exploded -= DespawnBomb;
+        base.ActionOnRelease(bomb);
+        bomb.Exploded -= EntityPool.Release;
     }
 
     protected override void ActionOnGet(Bomb bomb)
     {
         base.ActionOnGet(bomb);
-        bomb.EnabledEntity();
+        bomb.Exploded += EntityPool.Release;
         bomb.ChangeColor();
-        bomb.Exploded += DespawnBomb;
     }
     
     protected override Bomb Instantiate()
     {
         return Instantiate(PrefabEntity);
-    }
-    
-    private void DespawnBomb(Bomb bomb)
-    {
-        EntityPool.Release(bomb);
     }
 }

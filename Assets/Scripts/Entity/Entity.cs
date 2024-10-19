@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
-public abstract class EntityObjectPool : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected Renderer Renderer;
     [SerializeField] protected float MinTimeLive;
@@ -8,7 +9,7 @@ public abstract class EntityObjectPool : MonoBehaviour
     
     protected Color DefaultColor;
     
-    public float TimeLive { get; protected set; }
+    protected float TimeLive { get; private set; }
     
     private void Awake()
     {
@@ -24,14 +25,14 @@ public abstract class EntityObjectPool : MonoBehaviour
         }
     }
     
-    public void EnabledEntity()
+    public void EnableEntity()
     {
         RestoreDefaultColor();
         TimeLive = Random.Range(MinTimeLive, MaxTimeLive);
         gameObject.SetActive(true);
     }
     
-    public void DisabledEntity()
+    public void DisableEntity()
     {
         gameObject.SetActive(false);
     }

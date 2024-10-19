@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 public class SpawnerCube : Spawner<Cube>
 {
     [SerializeField] private Collider _colliderSpawner;
-    [SerializeField] private SpawnerBomb _spawnerBomb;
 
     private void Start()
     {
@@ -14,15 +13,13 @@ public class SpawnerCube : Spawner<Cube>
 
     protected override void ActionOnRelease(Cube cube)
     {
-        cube.DisabledEntity();
+        base.ActionOnRelease(cube);
         cube.Died -= EntityPool.Release;
-        _spawnerBomb.Spawn(cube.transform.position);
     }
 
     protected override void ActionOnGet(Cube cube)
     {
         base.ActionOnGet(cube);
-        cube.EnabledEntity();
         cube.Died += EntityPool.Release;
         cube.transform.position = RandomSpawnPoint();
     }
